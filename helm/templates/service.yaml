@@ -3,6 +3,11 @@ apiVersion: v1
 metadata:
   name: frontend
   namespace: expense
+  annotations:
+    # ఇది చాలా ముఖ్యం బావా! ఇది ఉంటేనే AWS Load Balancer Controller రంగంలోకి దిగుతుంది.
+    service.beta.kubernetes.io/aws-load-balancer-type: "external"
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
 spec:
   type: LoadBalancer
   selector:
@@ -12,5 +17,5 @@ spec:
   ports:
   - name: frontend-port
     protocol: TCP
-    port: 80 # service port
-    targetPort: 8080 # container port
+    port: 80        # బయట ప్రపంచానికి కనిపించే పోర్ట్
+    targetPort: 8080  # నీ నెక్స్ట్-జెన్ ఫ్రంటెండ్ కంటైనర్ రన్ అయ్యే పోర్ట్ (సాధారణంగా 80 ఉంటుంది)
