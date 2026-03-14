@@ -11,7 +11,7 @@ pipeline {
         DEBUG = 'true'
         appVersion = '' // this will become global, we can use across pipeline
         region = 'us-east-1'
-        account_id = '528564298423'
+        account_id = '017183880052'
         project = 'expense'
         environment = 'dev'
         component = 'frontend'
